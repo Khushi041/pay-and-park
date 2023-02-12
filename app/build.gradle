@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.razorpay:checkout:1.6.25'
+    implementation 'com.razorpay:checkout:1.6.29'
     //implementation 'com.shreyaspatil:EasyUpiPayment:2.0'
     //implementation 'dev.shreyaspatil:EasyUpiPayment:3.0.3'
     implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.3'
@@ -60,6 +60,7 @@ dependencies {
     testImplementation 'org.testng:testng:6.9.6'
     testImplementation 'junit:junit:4.12'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
+    implementation 'com.paytm.appinvokesdk:appinvokesdk:1.6.14'
 
 
     androidTestImplementation 'org.testng:testng:6.9.6'

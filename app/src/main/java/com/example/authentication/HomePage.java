@@ -20,6 +20,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -32,6 +37,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
     TextView tvName;
     public int v;
     FirebaseAuth fAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     FirebaseFirestore fstore;
     String userID;
     public static String email;
@@ -65,8 +72,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
         fstore= FirebaseFirestore.getInstance();
         userID=fAuth.getCurrentUser().getUid();
 
-
         DocumentReference documentReference=fstore.collection("Users").document(userID);
+
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {

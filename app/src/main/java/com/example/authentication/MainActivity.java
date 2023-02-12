@@ -5,11 +5,14 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
+import static com.google.firebase.messaging.Constants.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +28,18 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
     FirebaseFirestore fstore;
@@ -119,6 +128,25 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         }
     };
 
+    public void online(){
+        FirebaseDatabase.getInstance().getReference("Slotsss")
+                                    .child("Just")
+                                    .setValue(capacity).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(MainActivity.this, "User Has Been Registered Successfully!", Toast.LENGTH_LONG).show();
+                                                progressBar.setVisibility(View.VISIBLE);
+
+
+                                            } else {
+                                                Toast.makeText(MainActivity.this, "Failed To Register! Try Again", Toast.LENGTH_SHORT).show();
+                                                progressBar.setVisibility(View.GONE);
+
+                                            }
+                                        }
+                                    });
+    }
 
     private boolean checkPermission() {
         int permission1= ContextCompat.checkSelfPermission(getApplicationContext(),WRITE_EXTERNAL_STORAGE);
@@ -221,6 +249,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 if (task.isSuccessful()) {
                     //redirect to home page
                     loadingDialog.dismissDialog();
+                    //online();
                     startActivity(new Intent(MainActivity.this, HomePage.class));
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to Login! Please check your email and password", Toast.LENGTH_LONG).show();

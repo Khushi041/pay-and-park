@@ -11,6 +11,7 @@ buildscript {
 
     repositories{
         maven{url "https://jitpack.io"}
+//        url "https://artifactory.paytm.in/libs-release-local"
         mavenCentral()
     }
     allprojects{
