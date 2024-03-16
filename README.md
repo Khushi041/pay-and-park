@@ -24,5 +24,5 @@ To get started with Pay and Park, simply download the app from the Google Play S
 ## Support and Feedback
 For any issues or feedback regarding the Pay and Park app, please contact us at [hetrajsolanki148@gmail.com]. We welcome any suggestions for improvement and are committed to providing a seamless parking experience for our users.
 
-Thank you for choosing Pay and Park!
+Thank you for choosing Pay and Park !
 
