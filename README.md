@@ -1,6 +1,6 @@
 # Pay and Park
 
-Pay and Park is an Android application developed in Java that serves as a parking facility locator to your nearest location. This project was initiated by the Municipality of Surat with the aim of providing convenient parking solutions to residents and visitors.
+Pay and Park is an Android Application developed in Java that serves as a parking facility locator to your nearest location. This project was initiated by the Municipality of Surat with the aim of providing convenient parking solutions to residents and visitors.
 
 ## Problem Statement
 The growing urbanization and increase in the number of vehicles have led to parking congestion in urban areas, including Surat. To address this issue, the Municipality of Surat launched a hackathon seeking innovative solutions to help citizens find parking spaces more efficiently.
